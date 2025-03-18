@@ -18,6 +18,11 @@ set(LIBROMFS3DS_SRC
 )
 
 add_library(libromfs3ds STATIC ${LIBROMFS3DS_SRC})
+set_target_properties(libromfs3ds
+PROPERTIES
+    OUTPUT_NAME romfs3ds
+    PUBLIC_HEADER "include/libromfs3ds.h"
+)
 
 target_include_directories(libromfs3ds PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -28,4 +33,4 @@ target_include_directories(libromfs3ds PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includ
 install(TARGETS libromfs3ds
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
         ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+        PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
